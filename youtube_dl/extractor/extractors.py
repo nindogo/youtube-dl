@@ -1376,6 +1376,7 @@ from .voxmedia import (
     VoxMediaVolumeIE,
     VoxMediaIE,
 )
+from .vporn import VPornIE
 from .vrt import VRTIE
 from .vrak import VrakIE
 from .vrv import (
