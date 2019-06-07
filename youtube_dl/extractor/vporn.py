@@ -37,10 +37,10 @@ class VPornIE(InfoExtractor):
         title = self._html_search_regex(r'<h1>(.+?)</h1>', webpage, 'title')
 
         uploader = self._html_search_regex(
-            r'<span\s+class=[\"\']av[^>]+>(.+?)</span>', webpage, 'uploader')
+            r'avatarname["\']>(.+?)</span>', webpage, 'uploader')
 
         uploader_id = self._search_regex(
-            r'subscribeUser\((\d+)\)', webpage, 'uploader_id')
+            r'data-user=[\'"](\d+)[\'"]', webpage, 'uploader_id')
 
         thumbnail = self._search_regex(
             r'posterurl\s+=\s+[\'\"](.*?)[\'\"];', webpage, 'thumbnail')
@@ -64,7 +64,8 @@ class VPornIE(InfoExtractor):
             'id': video_id,
             'title': title,
             'formats': formats,
-            'description': self._html_search_meta('description', webpage, 'description'),
+            'description': self._html_search_meta(
+                'description', webpage, 'description'),
             'uploader': uploader,
             'uploader_id': uploader_id,
             'thumbnail': thumbnail,
